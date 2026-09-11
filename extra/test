@@ -1,0 +1,67 @@
+from tkinter import font
+
+import pygame
+import sys
+
+pygame.init()
+
+screen = pygame.display.set_mode((1000,900))
+
+pygame.display.set_caption("Pac-Man")
+
+button = pygame.Rect(400, 400, 200, 100)
+font = pygame.font.Font("assets/fonts/PixelOperatorMono8-Bold.ttf", 50)
+clock = pygame.time.Clock()
+
+map = pygame.image.load("assets/pngs/map_demo.png").convert()
+map = pygame.transform.scale(map, (map.get_width() * 4, map.get_height() * 4))
+
+running = True
+x = 0
+moving = False
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_d:
+                moving = True
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_d:
+                moving = False
+        
+    
+    screen.fill((34,34, 77))
+    screen.blit(map, (x, 100))
+    
+    test = font.render("HELLO", True, "white")
+    screen.blit(test, (50, 50))
+
+    if moving:
+        x += 1
+
+    
+    hitbox = pygame.Rect(x, 30, map.get_width(), map.get_height())
+
+    mpos = pygame.mouse.get_pos()
+
+    target = pygame.Rect(300, 0, 160, 280)
+    collision = hitbox.colliderect(target)
+    m_collision = target.collidepoint(mpos)
+    pygame.draw.rect(screen, (255 * collision, 255*m_collision, 0), target)
+
+    
+
+
+    pygame.draw.rect(screen, "white", button)
+
+    text = font.render("PLAY", True, "black")
+    text_rect = text.get_rect(center=button.center)
+    screen.blit(text, text_rect)
+
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
