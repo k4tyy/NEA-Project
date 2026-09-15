@@ -1,5 +1,7 @@
 import pygame
 
+from ui.ui_mode import ui_mode
+
 #button class for menu buttons
 class Button:
     def __init__(self, x, y, width, height, text, function):
@@ -18,13 +20,13 @@ class Button:
 
 #states functions called by buttons
 def select_level():
-    return "select_level"
+    return ui_mode.SELECT_LEVEL
 
 def multiplayer_game():
-    return "multiplayer"
+    return ui_mode.MULTIPLAYER
 
 def customise_game():
-    return "customise"
+    return ui_mode.CUSTOMISE
 
 
 #menu subroutine

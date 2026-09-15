@@ -1,5 +1,6 @@
 import sys
 import pygame
+#from ui.select_level import difficulty_level
 
 #paused tab creation
 def pause_game():
@@ -11,7 +12,7 @@ def draw_grid():
   block_size = ""
 
 #game function to run the game
-def game():
+def game(my_difficulty_level):
     #pygame.init()
 
     global screen

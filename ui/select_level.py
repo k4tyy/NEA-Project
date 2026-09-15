@@ -1,5 +1,11 @@
 import sys
 import pygame
+from enum import Enum, auto
+
+class difficulty_level(Enum):
+    EASY = 1
+    MEDIUM = 2
+    HARD = 3
 
 #button class for menu buttons
 class Button:
@@ -19,24 +25,21 @@ class Button:
 
 #levels buttons functions
 def easy_level(): 
-    return "game"
-    return "easy"
+    return difficulty_level.EASY
 
 def medium_level():
-    return "medium"
+    return difficulty_level.MEDIUM
 
 def hard_level():
-    return "hard"
+    return difficulty_level.HARD
 
-def select_level_menu():
+def select_level_menu() -> difficulty_level:
     #set up window
     screen = pygame.display.set_mode((1000,900))
     
     pygame.display.set_caption("Pac-Man")
 
     screen.fill((34,34, 77))
-
-    clock = pygame.time.Clock()
 
     #buttons size and position and function
     easy_button = Button((screen.get_width() - 440) // 2, 120, 440, 160, "EASY", easy_level)
@@ -98,7 +101,6 @@ def select_level_menu():
         screen.blit(text, text_rect)
 
         pygame.display.flip()
-        clock.tick(60)
 
 
 # def pacman(level):
