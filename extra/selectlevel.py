@@ -120,3 +120,24 @@ def pause_game():
 
 
 select_level_menu()
+
+
+
+
+# class Rectangle:
+#     def __init__(self, width, height):
+#         self.width = int(width)
+#         self.height = int(height)
+
+#     def Area(self) -> int:
+#         return self.width * self.height
+
+
+
+# myRectangle = Rectangle(width=3, height=4)
+# print("Area = ", myRectangle.Area() )
+
+# myRectangle2 = Rectangle(width=2, height=7)
+# print("Area = ", myRectangle2.Area() )
+
+# print(myRectangle.height)
