@@ -1,4 +1,4 @@
-# One tile within the map
+# One tile within the map.
 class Tile:
     top = False
     bottom = False
