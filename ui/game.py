@@ -1,6 +1,8 @@
 import sys
 import pygame
 #from ui.select_level import difficulty_level
+from ui.map import Map
+from ui.tile import Tile
 
 #paused tab creation
 def pause_game():
@@ -13,8 +15,6 @@ def draw_grid():
 
 #game function to run the game
 def game(my_difficulty_level):
-    #pygame.init()
-
     global screen
     screen = pygame.display.set_mode((1000,900))
 
@@ -43,11 +43,13 @@ def game(my_difficulty_level):
     heart3 = pygame.image.load("assets/pngs/red_heart.png").convert_alpha()
     heart3 = pygame.transform.scale(heart3, (heart3.get_width() * 2.5, heart3.get_height() * 2.5))
     
-
     #draw hearts
     screen.blit(heart1, (10, 800))
     screen.blit(heart2, (90, 800))
     screen.blit(heart3, (170, 800))
+
+    myMap = Map(width=17, height=17)
+    myMap.render(screen)
 
     pygame.display.flip()
 
