@@ -9,10 +9,6 @@ def pause_game():
     pause_tab = pygame.Rect((screen.get_width() - 700) // 2, (screen.get_height() - 620) // 2, 700, 620)
     pygame.draw.rect(screen, "white", pause_tab)
 
-#making map grid
-def draw_grid():
-  block_size = ""
-
 #game function to run the game
 def game(my_difficulty_level):
     global screen
@@ -48,6 +44,7 @@ def game(my_difficulty_level):
     screen.blit(heart2, (90, 800))
     screen.blit(heart3, (170, 800))
 
+    #draw map
     myMap = Map(width=17, height=17)
     myMap.render(screen)
 

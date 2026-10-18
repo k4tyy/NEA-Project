@@ -2,18 +2,15 @@ import pygame
 
 from ui.tile import Tile
 
-
-# function to add t-bar
-
-# function to reflect map
-
 class Map:
+    #set size of tile
     def tile_width(self):
         return 30
     
     def tile_height(self):
         return 30
-           
+
+    #create actual map       
     def __init__(self, width, height):
         self.width = int(width)
         self.height = int(height)
@@ -73,6 +70,7 @@ class Map:
         self.create_block(1, 15, 6, 1)
         self.create_block(10, 15, 6, 1)
 
+    #calculate map size
     def map_width(self):
         return self.width * self.tile_width()
 
@@ -89,17 +87,6 @@ class Map:
             self.tiles[top_left_x][y].left = True
             self.tiles[top_left_x + block_width - 1][y].right = True
 
-    # function to add line
-    # def create_horizontal_line(self, top_left_x, top_left_y):
-    #     self.tiles[top_left_x][top_left_y].top = True
-    #     self.tiles[top_left_x][top_left_y].bottom = True
-
-    # def create_vertical_line(self, top_left_x, top_left_y):
-    #     self.tiles[top_left_x][top_left_y].left = True
-    #     self.tiles[top_left_x][top_left_y].right = True
-
-
-    #    create_block(self, 1, 1, 4)
     def render(self, screen: pygame.Surface):
         #line set up
         line_colour = (66, 68, 129)
@@ -134,7 +121,7 @@ class Map:
                         screen, line_colour,(top_left_x + self.tile_width(), top_left_y), (top_left_x + self.tile_width(), top_left_y + self.tile_height()), line_width
                     )
 
-
+#inital map array print
 # for y in range(myMap.height):
 #     for x in range(myMap.width):
 #         if myMap.tiles[x][y].top:
@@ -164,13 +151,3 @@ class Map:
 #             print(" ", end='')
 
 #     print()
-
-# def draw(self, screen):
-#     line_colour = (66, 68, 129)
-#     line_width = 5
-
-#     if self.top:
-#         pygame.draw.line(
-#             screen, line_colour,(self.top_left_x, self.top_right_y), (self.top_left_x + block_width, self.top_left_y + block_height), line_width
-#         )
-    
