@@ -32,13 +32,16 @@ class Map:
         self.create_block(4, 3, 1, 4)
         self.create_block(6, 3, 5, 1)
         self.create_block(8, 3, 1, 3)
+        self.set_top_only(8, 3)
         self.create_block(12, 3, 1, 4)
         self.create_block(14, 3, 2, 1)
         #row 5
         self.create_block(0, 5, 3, 2)
         self.create_block(4, 5, 3, 1)
+        self.set_left_only(4, 5)
         self.create_block(10, 5, 3, 1)
         self.create_block(14, 5, 3, 2)
+        self.set_right_only(12, 5)
 
         #row 8       
         self.create_block(0, 8, 3, 2)
@@ -50,14 +53,21 @@ class Map:
         #row 10
         self.create_block(8, 10, 1, 2)
 
+        self.set_top_only(8, 9)
+
         #row 11
         self.create_block(1, 11, 2, 1)
         self.create_block(4, 11, 3, 1)
         self.create_block(10, 11, 3, 1)
         self.create_block(14, 11, 2, 1)
+
         #row 12
         self.create_block(2, 12, 1, 2)
         self.create_block(14, 12, 1, 2)
+
+        self.set_top_and_left_only(14, 11)
+        self.set_top_and_right_only(2, 11)
+
         #row 13
         self.create_block(0, 13, 1, 1)
         self.create_block(4, 13, 1, 2)
@@ -66,9 +76,13 @@ class Map:
         self.create_block(16, 13, 1, 1)
         #row 14
         self.create_block(8, 14, 1, 2)
+        self.set_top_only(8, 13)
         #row 15
         self.create_block(1, 15, 6, 1)
         self.create_block(10, 15, 6, 1)
+        self.set_bottom_only(4, 15)
+        self.set_bottom_only(12, 15)
+
 
     #calculate map size
     def map_width(self):
@@ -87,6 +101,42 @@ class Map:
             self.tiles[top_left_x][y].left = True
             self.tiles[top_left_x + block_width - 1][y].right = True
 
+    #functions to remove uncesessary lines
+    #top line only
+    def set_top_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].left = False
+        self.tiles[top_left_x][top_left_y].right = False
+        self.tiles[top_left_x][top_left_y].bottom = False
+
+    #left line only
+    def set_left_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].top = False
+        self.tiles[top_left_x][top_left_y].right = False
+        self.tiles[top_left_x][top_left_y].bottom = False
+
+    #right line only
+    def set_right_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].left = False
+        self.tiles[top_left_x][top_left_y].top = False
+        self.tiles[top_left_x][top_left_y].bottom = False
+
+    #bottom line only
+    def set_bottom_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].left = False
+        self.tiles[top_left_x][top_left_y].right = False
+        self.tiles[top_left_x][top_left_y].top = False
+
+    #top and right line only
+    def set_top_and_right_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].left = False
+        self.tiles[top_left_x][top_left_y].bottom = False
+
+    #top and left line only
+    def set_top_and_left_only(self, top_left_x, top_left_y):
+        self.tiles[top_left_x][top_left_y].right = False
+        self.tiles[top_left_x][top_left_y].bottom = False
+
+    #function to draw map
     def render(self, screen: pygame.Surface):
         #line set up
         line_colour = (66, 68, 129)
@@ -94,6 +144,7 @@ class Map:
         offset_x = (screen.get_width() - self.map_width())/2
         offset_y = (screen.get_height() - self.map_height())/2
 
+        #loops to run through each tile of the map
         for y in range(self.height):
             for x in range(self.width):
                 top_left_x = x * self.tile_width() + offset_x

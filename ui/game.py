@@ -30,6 +30,10 @@ def game(my_difficulty_level):
     high_score_text = font.render("HIGH SCORE: " + high_score, True, "white")
     screen.blit(high_score_text, (660, 5))
 
+
+    #change hearts based on lives
+    #if hearts == 3:
+
     heart1 = pygame.image.load("assets/pngs/red_heart.png").convert_alpha()
     heart1 = pygame.transform.scale(heart1, (heart1.get_width() * 2.5, heart1.get_height() * 2.5))
 
@@ -38,8 +42,13 @@ def game(my_difficulty_level):
 
     heart3 = pygame.image.load("assets/pngs/red_heart.png").convert_alpha()
     heart3 = pygame.transform.scale(heart3, (heart3.get_width() * 2.5, heart3.get_height() * 2.5))
+ 
+    # if lives == 2:
+    #     heart3 = pygame.image.load("assets/pngs/grey_heart.png").convert_alpha()
+    #     heart3 = pygame.transform.scale(heart3, (heart3.get_width() * 2.5, heart3.get_height() * 2.5))
+    # elif lives == 1:
+
     
-    #draw hearts
     screen.blit(heart1, (10, 800))
     screen.blit(heart2, (90, 800))
     screen.blit(heart3, (170, 800))
