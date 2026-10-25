@@ -2,7 +2,7 @@ import sys
 import pygame
 #from ui.select_level import difficulty_level
 from ui.map import Map
-from ui.tile import Tile
+#from ui.tile import Tile
 
 #paused tab creation
 def pause_game():
@@ -54,7 +54,7 @@ def game(my_difficulty_level):
     screen.blit(heart3, (170, 800))
 
     #draw map
-    myMap = Map(width=17, height=17)
+    myMap = Map()
     myMap.render(screen)
 
     pygame.display.flip()
