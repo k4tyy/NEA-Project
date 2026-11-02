@@ -43,14 +43,18 @@ class Map:
 
         def center(self) -> tuple[int, int]:
             return self.left() + self.myMap.tile_width / 2, self.top() + self.myMap.tile_height / 2
+
+        # TODO: Add next_tile_left, next_tile_up and next_tile_down
                 
         def next_tile_right(self) -> Map.Tile:
-            if self.x < self.myMap.width:
+            if self.x < self.myMap.width - 1:
                 next_tile = self.myMap.tiles[self.x + 1][self.y]
             else:
                 next_tile = self.myMap.tiles[0][self.y]
 
             return next_tile
+
+        # TODO: Add next tile left, top and bottom.
 
     ###################################################################################
     # End of Tile class
@@ -68,70 +72,79 @@ class Map:
         self.tiles = [[Map.Tile(x, y, self) for y in range(self.height)] for x in range(self.width)] 
 
         #entire map block
-        self.create_block(0,0,self.width,self.height)
+        self.create_block(0,0,self.width,self.height, True)
 
         #create boxes in order of rows starting from top left
         #row 0
-        self.create_block(8, 0, 1, 2)
+        self.create_block(8, 0, 1, 2, False)
         
         #row 1
-        self.create_block(1, 1, 2, 1)
-        self.create_block(4, 1, 3, 1)
-        self.create_block(10, 1, 3, 1)
-        self.create_block(14, 1, 2, 1)
+        self.create_block(1, 1, 2, 1, False)
+        self.create_block(4, 1, 3, 1, False)
+        self.create_block(10, 1, 3, 1, False)
+        self.create_block(14, 1, 2, 1, False)
 
         #row 3
-        self.create_block(1, 3, 2, 1)
-        self.create_block(4, 3, 1, 4)
-        self.create_block(6, 3, 5, 1)
-        self.create_block(8, 3, 1, 3)
+        self.create_block(1, 3, 2, 1, False)
+        self.create_block(4, 3, 1, 4, False)
+        self.create_block(6, 3, 5, 1, False)
+        self.create_block(8, 3, 1, 3, False)
         self.set_top_only(8, 3)
-        self.create_block(12, 3, 1, 4)
-        self.create_block(14, 3, 2, 1)
+        self.create_block(12, 3, 1, 4, False)
+        self.create_block(14, 3, 2, 1, False)
 
         #row 5
-        self.create_block(0, 5, 3, 2)
-        self.create_block(4, 5, 3, 1)
+        self.create_block(0, 5, 3, 2, False)
+        self.create_block(4, 5, 3, 1, False)
         self.set_left_only(4, 5)
-        self.create_block(10, 5, 3, 1)
-        self.create_block(14, 5, 3, 2)
+        self.create_block(10, 5, 3, 1, False)
+        self.create_block(14, 5, 3, 2, False)
         self.set_right_only(12, 5)
 
         #row 8       
-        self.create_block(0, 8, 3, 2)
-        self.create_block(4, 8, 1, 2)
-        self.create_block(12, 8, 1, 2)
-        self.create_block(14, 8, 3, 2)
+        self.create_block(0, 8, 3, 2, False)
+        self.create_block(4, 8, 1, 2, False)
+        self.create_block(12, 8, 1, 2, False)
+        self.create_block(14, 8, 3, 2, False)
 
         #row 9
-        self.create_block(6, 9, 5, 1)
-        self.create_block(8, 9, 1, 3)
+        self.create_block(6, 9, 5, 1, False)
+        self.create_block(8, 9, 1, 3, False)
         self.set_top_only(8, 9)
 
         #row 11
-        self.create_block(1, 11, 2, 1)
-        self.create_block(4, 11, 3, 1)
-        self.create_block(10, 11, 3, 1)
-        self.create_block(14, 11, 2, 1)
-        self.create_block(2, 11, 1, 3)
-        self.create_block(14, 11, 1, 3)
+        self.create_block(1, 11, 2, 1, False)
+        self.create_block(4, 11, 3, 1, False)
+        self.create_block(10, 11, 3, 1, False)
+        self.create_block(14, 11, 2, 1, False)
+        self.create_block(2, 11, 1, 3, False)
+        self.create_block(14, 11, 1, 3, False)
         self.set_top_and_right_only(2, 11)
         self.set_top_and_left_only(14, 11)
 
         #row 13
-        self.create_block(0, 13, 1, 1)
-        self.create_block(4, 13, 1, 3)
-        self.create_block(6, 13, 5, 1)
-        self.create_block(12, 13, 1, 3)
-        self.create_block(16, 13, 1, 1)
-        self.create_block(8, 13, 1, 3)
+        self.create_block(0, 13, 1, 1, False)
+        self.create_block(4, 13, 1, 3, False)
+        self.create_block(6, 13, 5, 1, False)
+        self.create_block(12, 13, 1, 3, False)
+        self.create_block(16, 13, 1, 1, False)
+        self.create_block(8, 13, 1, 3, False)
         self.set_top_only(8, 13)
 
         #row 15
-        self.create_block(1, 15, 6, 1)
-        self.create_block(10, 15, 6, 1)
+        self.create_block(1, 15, 6, 1, False)
+        self.create_block(10, 15, 6, 1, False)
         self.set_bottom_only(4, 15)
         self.set_bottom_only(12, 15)
+
+        for y in range(self.height):
+            for x in range(self.width):
+                this_tile = self.tiles[x][y]
+
+                if this_tile.has_right:
+                    this_tile.next_tile_right().has_left = True
+
+
 
     #calculate map size
     def map_width(self):
@@ -141,7 +154,7 @@ class Map:
         return self.height * self.tile_height
 
     #function to add box
-    def create_block(self, top_left_x, top_left_y, block_width, block_height):
+    def create_block(self, top_left_x, top_left_y, block_width, block_height, has_pellet):
         for x in range(top_left_x, top_left_x + block_width):
             self.tiles[x][top_left_y].has_top = True
             self.tiles[x][top_left_y + block_height - 1].has_bottom = True
@@ -149,6 +162,10 @@ class Map:
         for y in range(top_left_y, top_left_y + block_height):
             self.tiles[top_left_x][y].has_left = True
             self.tiles[top_left_x + block_width - 1][y].has_right = True
+
+        for y in range(top_left_y, top_left_y + block_height):
+            for x in range(top_left_x, top_left_x + block_width):
+                self.tiles[x][y].has_pellet = has_pellet
 
     #functions to remove uncesessary lines
     #top line only
