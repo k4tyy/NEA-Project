@@ -76,64 +76,64 @@ class Map:
 
         #create boxes in order of rows starting from top left
         #row 0
-        self.create_block(8, 0, 1, 2, False)
+        self.create_block(8, 0, 1, 2)
         
         #row 1
-        self.create_block(1, 1, 2, 1, False)
-        self.create_block(4, 1, 3, 1, False)
-        self.create_block(10, 1, 3, 1, False)
-        self.create_block(14, 1, 2, 1, False)
+        self.create_block(1, 1, 2, 1)
+        self.create_block(4, 1, 3, 1)
+        self.create_block(10, 1, 3, 1)
+        self.create_block(14, 1, 2, 1)
 
         #row 3
-        self.create_block(1, 3, 2, 1, False)
-        self.create_block(4, 3, 1, 4, False)
-        self.create_block(6, 3, 5, 1, False)
-        self.create_block(8, 3, 1, 3, False)
+        self.create_block(1, 3, 2, 1)
+        self.create_block(4, 3, 1, 4)
+        self.create_block(6, 3, 5, 1)
+        self.create_block(8, 3, 1, 3)
         self.set_top_only(8, 3)
-        self.create_block(12, 3, 1, 4, False)
-        self.create_block(14, 3, 2, 1, False)
+        self.create_block(12, 3, 1, 4)
+        self.create_block(14, 3, 2, 1)
 
         #row 5
-        self.create_block(0, 5, 3, 2, False)
-        self.create_block(4, 5, 3, 1, False)
+        self.create_block(0, 5, 3, 2)
+        self.create_block(4, 5, 3, 1)
         self.set_left_only(4, 5)
-        self.create_block(10, 5, 3, 1, False)
-        self.create_block(14, 5, 3, 2, False)
+        self.create_block(10, 5, 3, 1)
+        self.create_block(14, 5, 3, 2)
         self.set_right_only(12, 5)
 
         #row 8       
-        self.create_block(0, 8, 3, 2, False)
-        self.create_block(4, 8, 1, 2, False)
-        self.create_block(12, 8, 1, 2, False)
-        self.create_block(14, 8, 3, 2, False)
+        self.create_block(0, 8, 3, 2)
+        self.create_block(4, 8, 1, 2)
+        self.create_block(12, 8, 1, 2)
+        self.create_block(14, 8, 3, 2)
 
         #row 9
-        self.create_block(6, 9, 5, 1, False)
-        self.create_block(8, 9, 1, 3, False)
+        self.create_block(6, 9, 5, 1)
+        self.create_block(8, 9, 1, 3)
         self.set_top_only(8, 9)
 
         #row 11
-        self.create_block(1, 11, 2, 1, False)
-        self.create_block(4, 11, 3, 1, False)
-        self.create_block(10, 11, 3, 1, False)
-        self.create_block(14, 11, 2, 1, False)
-        self.create_block(2, 11, 1, 3, False)
-        self.create_block(14, 11, 1, 3, False)
+        self.create_block(1, 11, 2, 1)
+        self.create_block(4, 11, 3, 1)
+        self.create_block(10, 11, 3, 1)
+        self.create_block(14, 11, 2, 1)
+        self.create_block(2, 11, 1, 3)
+        self.create_block(14, 11, 1, 3)
         self.set_top_and_right_only(2, 11)
         self.set_top_and_left_only(14, 11)
 
         #row 13
-        self.create_block(0, 13, 1, 1, False)
-        self.create_block(4, 13, 1, 3, False)
-        self.create_block(6, 13, 5, 1, False)
-        self.create_block(12, 13, 1, 3, False)
-        self.create_block(16, 13, 1, 1, False)
-        self.create_block(8, 13, 1, 3, False)
+        self.create_block(0, 13, 1, 1)
+        self.create_block(4, 13, 1, 3)
+        self.create_block(6, 13, 5, 1)
+        self.create_block(12, 13, 1, 3)
+        self.create_block(16, 13, 1, 1)
+        self.create_block(8, 13, 1, 3)
         self.set_top_only(8, 13)
 
         #row 15
-        self.create_block(1, 15, 6, 1, False)
-        self.create_block(10, 15, 6, 1, False)
+        self.create_block(1, 15, 6, 1)
+        self.create_block(10, 15, 6, 1)
         self.set_bottom_only(4, 15)
         self.set_bottom_only(12, 15)
 
@@ -154,7 +154,7 @@ class Map:
         return self.height * self.tile_height
 
     #function to add box
-    def create_block(self, top_left_x, top_left_y, block_width, block_height, has_pellet):
+    def create_block(self, top_left_x, top_left_y, block_width, block_height, has_pellet = False):
         for x in range(top_left_x, top_left_x + block_width):
             self.tiles[x][top_left_y].has_top = True
             self.tiles[x][top_left_y + block_height - 1].has_bottom = True
