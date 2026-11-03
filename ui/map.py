@@ -5,7 +5,7 @@ import pygame
 class Map:
 
     ###################################################################################
-    # Tile class - this is a subclass of Map
+    #tile class - subclass of Map
     ###################################################################################
     class Tile:
         def __init__(self, x: int, y:int, map: Map):
@@ -20,7 +20,7 @@ class Map:
 
             self.has_pellet = True
 
-        # functions to return screen coordinates of tile
+        #functions to return screen coordinates of tile
         def left(self) -> int:
             return self.x * self.myMap.tile_width + self.myMap.offset_x
 
@@ -30,22 +30,28 @@ class Map:
         def top(self) -> int:
             return self.y * self.myMap.tile_height + self.myMap.offset_y
 
-        # TODO: Add bottom here
+        def bottom(self) -> int:
+            return self.top() + self.myMap.tile_height
 
-        # functions to return corners of tile
+
+        #functions to return corners of tile
         def top_left(self) -> tuple[int, int]:
             return self.left(), self.top()
 
         def top_right(self) -> tuple[int, int]:
             return self.right(), self.top()
 
-        # TODO: Add bottom_left and bottom_right here
+        def bottom_left(self) -> tuple[int, int]:
+            return self.left(), self.bottom()
 
+        def bottom_right(self) -> tuple[int, int]:
+            return self.right(), self.bottom()
+
+        #center of each tile
         def center(self) -> tuple[int, int]:
             return self.left() + self.myMap.tile_width / 2, self.top() + self.myMap.tile_height / 2
 
-        # TODO: Add next_tile_left, next_tile_up and next_tile_down
-                
+        #next tile functions
         def next_tile_right(self) -> Map.Tile:
             if self.x < self.myMap.width - 1:
                 next_tile = self.myMap.tiles[self.x + 1][self.y]
@@ -54,7 +60,28 @@ class Map:
 
             return next_tile
 
-        # TODO: Add next tile left, top and bottom.
+        # TODO: Add next_tile_left, next_tile_up and next_tile_down
+        def next_tile_left(self) -> Map.Tile:
+            if self.x > 0:
+                next_tile = self.myMap.tiles[self.x - 1][self.y]
+            else:
+                next_tile = self.myMap.tiles[self.myMap.map_width - 1][self.y]
+
+            return next_tile
+
+        def next_tile_up(self) -> Map.Tile:
+            if self.y > 0:
+                next_tile = self.myMap.tiles[self.x][self.y - 1]
+                return next_tile
+            else:
+                return None
+
+        def next_tile_down(self) -> Map.Tile:
+            if self.y < self.myMap.map_height - 1:
+                next_tile = self.myMap.tiles[self.x][self.y + 1]
+                return next_tile
+            else:
+                return None
 
     ###################################################################################
     # End of Tile class
