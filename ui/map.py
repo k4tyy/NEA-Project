@@ -278,6 +278,19 @@ class Map:
                 if this_tile.has_pellet:
                     pygame.draw.circle(screen, pellet_colour, this_tile.center(), 2)
 
+
+class Player:
+    def __init__(self, x: int, y:int, map: Map, screen: pygame.Surface):
+        self.x = x
+        self.y = y
+        self.myMap = map
+
+    def render(self, top_left_x: int, top_left_y: int, screen: pygame.Surface):
+        player = pygame.image.load("assets/pngs/rocket.png")
+        # player = pygame.transform.sca
+
+        screen.blit(player, (top_left_x, top_left_y))
+
 #inital map array print
 # for y in range(myMap.height):
 #     for x in range(myMap.width):
